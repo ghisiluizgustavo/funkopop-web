@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "f663eeba-c0d0-4824-a5a1-31443299b4aa",
+		"name": "FunkPop Web 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12279520"
+	},
+	"item": [
+		{
+			"name": "gel all users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/62a27daad4ad267095eb1b88",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"62a27daad4ad267095eb1b88"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"A BIND\",\r\n    \"user\": \"A.Bond\",\r\n    \"senha\": \"1234\",\r\n    \"funkos\": [\r\n        {\r\n            \"id\": 1,\r\n            \"descricao\": \"Iron\",\r\n            \"valor\": 15.99,\r\n            \"url\": \"http://localhost:4000/public/funko/sapien.jpg\",\r\n            \"sale\": true\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
