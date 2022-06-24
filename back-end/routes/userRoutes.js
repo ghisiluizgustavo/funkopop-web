@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../model/User')
+const mongoose = require('mongoose')
 
 router.get("/", async (req, res) => {
   const users = await User.find()
@@ -14,15 +15,22 @@ router.get("/:id", async (req, res) => {
 })
 
 router.post("/", async (req, res) => {
-  const { nome, user, senha, funkos: [{ id, descricao, valor, url, sale }] } = req.body
-  const userToCreate = { nome, user, senha, funkos: [{ id, descricao, valor, url, sale }] }
+  let _id = new mongoose.Types.ObjectId()
+  const { nome, user, senha, funkos } = req.body
+  const userToCreate = { _id, nome, user, senha, funkos }
 
   try {
       await User.create(userToCreate)
       res.status(201).json({ message: "Usuario criado" })
   } catch(e){
-      res.send(e)
+      res.status(500).send(e)
   }
+})
+
+router.delete("/:id", async (req, res) => {
+  const id = req.params.id
+  await User.deleteOne({ id: id})
+  res.status(200).json({ message: "Usuario deletado" })
 })
 
 module.exports = router;

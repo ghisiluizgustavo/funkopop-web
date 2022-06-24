@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const User = mongoose.model("User", {
-    _id: Object,
+    _id: mongoose.Schema.Types.ObjectId,
     nome: String,
     user: String,
     senha: String,
