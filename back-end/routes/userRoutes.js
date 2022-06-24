@@ -14,10 +14,23 @@ router.get("/:id", async (req, res) => {
   res.status(200).json(user)
 })
 
-router.post("/", async (req, res) => {
+router.post("/login", async (req, res) => {
+  const user = req.body.user
+  const senha = req.body.senha
+  const userDb = await User.findOne({ user: user })
+  if (!userDb){
+    res.status(404).json({ message: "Usuario nao encontrado "})
+  }
+  if (userDb.senha != senha){
+    res.status(400).json({ message: "Senha incorreta" })  
+  }
+  res.status(200).send()
+})
+
+router.post("/register", async (req, res) => {
   let _id = new mongoose.Types.ObjectId()
-  const { nome, user, senha, funkos } = req.body
-  const userToCreate = { _id, nome, user, senha, funkos }
+  const { nome, user, senha } = req.body
+  const userToCreate = { _id, nome, user, senha }
 
   try {
       await User.create(userToCreate)
