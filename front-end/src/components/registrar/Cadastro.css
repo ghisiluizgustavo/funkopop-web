@@ -1,3 +1,12 @@
+.container{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    flex-direction: column;
+}
+
 form {
     display: flex;
     align-items: center;
@@ -6,17 +15,14 @@ form {
 }
 
 input {
-    margin: 10px;
+    margin: 5px;
     border-radius: 5px;
     width: 250px;
     height: 20px;
 }
 
-button {
-    width: 100px;
-    height: 40px;
-    background-color: aliceblue;
+#submit {
     cursor: pointer;
-    margin-top: 20px;
-    border-radius: 10px;
+    width: 200px;
+    height: 40px;
 }

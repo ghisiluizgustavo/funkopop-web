@@ -35,12 +35,12 @@ function Login() {
   }
 
   return (
-    <div>
+    <div className="container">
       <h1>Login</h1>
         <form onSubmit={validarUser}>
             <input type='text' id="user" onChange={handleUser} value={user} /><br/>
             <input type='password' id="senha" onChange={handlePassword} value={senha} /><br/>
-            <input type="submit" value="Entrar" />
+            <input id="submit" type="submit" value="Entrar" />
         </form>
       <Link to={"/cadastro"}>Deseja se cadastrar?</Link>
     </div>

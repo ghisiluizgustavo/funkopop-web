@@ -41,13 +41,13 @@ function Cadastro() {
   }
 
   return (
-    <div>
+    <div className="container">
       <h1>Cadastrar</h1>
       <form onSubmit={saveUser}>
         <input type='text' placeholder="Nome" id="nome" onChange={handleNome} value={nome} /><br/>
         <input type='text' placeholder="Usuario" id="user" onChange={handleUser} value={user} /><br/>
         <input type='password' placeholder="Senha" id="senha" onChange={handlePassword} value={senha} /><br/>
-        <input type="submit" value="Cadastrar" />
+        <input id="submit" type="submit" value="Cadastrar" />
       </form>
     </div>
   );

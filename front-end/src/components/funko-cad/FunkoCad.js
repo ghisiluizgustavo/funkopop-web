@@ -49,8 +49,7 @@ function FunkoCad() {
   }
 
   return (
-    <div>
-      <Link to={"/funko"}>Lista de funkos</Link>
+    <div className="container">
       <h1>Cadastro de Funko</h1>
       <form onSubmit={saveFunko}>
         <label>Descrição: </label>
@@ -61,7 +60,7 @@ function FunkoCad() {
         <input type='boolean' id="sale" onChange={handleSale} value={sale} /><br/>
         <label>Url da imagem: </label>
         <input type='text' id="url" onChange={handleUrl} value={url} /><br/>
-        <input type="submit" value="Salvar Funko" />
+        <input id="submit" type="submit" value="Salvar Funko" />
       </form>
     </div>
   );

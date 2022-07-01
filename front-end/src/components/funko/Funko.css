@@ -7,10 +7,14 @@
 }
 
 .funko {
-    width: 200px;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
     display: flex;
     flex-direction: column;
     margin: 30px;
+    background-color: rgb(226, 226, 226);
+    border-radius: 5px;
 }
 
 p {
@@ -21,4 +25,5 @@ img {
     width: 200px;
     height: 200px;
     margin-bottom: 10px;
+    border-radius: 5px;
 }
