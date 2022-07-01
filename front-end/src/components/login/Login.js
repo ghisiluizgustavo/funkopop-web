@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Axios from 'axios'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import './Login.css'
 
 function Login() {
   let navigate = useNavigate();
@@ -35,12 +36,13 @@ function Login() {
 
   return (
     <div>
-      <h1>LOGIN</h1>
-      <form onSubmit={validarUser}>
-        <input type='text' id="user" onChange={handleUser} value={user} /><br/>
-        <input type='password' id="senha" onChange={handlePassword} value={senha} /><br/>
-        <input type="submit" value="Entrar" />
-      </form>
+      <h1>Login</h1>
+        <form onSubmit={validarUser}>
+            <input type='text' id="user" onChange={handleUser} value={user} /><br/>
+            <input type='password' id="senha" onChange={handlePassword} value={senha} /><br/>
+            <input type="submit" value="Entrar" />
+        </form>
+      <Link to={"/cadastro"}>Deseja se cadastrar?</Link>
     </div>
   );
 }

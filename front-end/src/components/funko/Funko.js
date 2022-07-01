@@ -23,7 +23,7 @@ function Funko() {
     return (
         <div>
             <h3>RESULTADOS</h3>
-            <Link to="/">Login</Link>
+            <Link to="/funko-cad">Cadastrar funko</Link>
             <div className='container'>
                 {funkos.map(funko => (
                     <div className='funko'>
