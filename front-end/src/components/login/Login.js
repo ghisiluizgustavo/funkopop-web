@@ -1,51 +1,48 @@
-import React from 'react'
+import React, { useState } from "react"
 import Axios from 'axios'
-import './Login.css'
+import { useNavigate } from "react-router-dom";
 
-class Login extends React.Component {
+function Login() {
+  let navigate = useNavigate();
+  const [user, setUser] = useState("")
+  const [senha, setSenha] = useState("")
 
-    constructor(){
-        super()
-        this.url = "http://localhost:4000/api/user/"
-        this.state = {
-            "user": "",
-            "senha": ""
-        }
+  const url = "http://localhost:4000/api/user/"
+  
+  async function validarUser(event) {
+    event.preventDefault();
+    const userVerify = {
+      user: user,
+      senha: senha
     }
 
-    handleInput = (event) => {
-        this.setState({
-            [event.target.id]: event.target.value
-        })
-    }
+    
+    let requisicao = Axios.post(url + "login", userVerify)
+    requisicao.then((resposta) => {
+      if(resposta.status === 200){
+        navigate("/funko")
+      }   
+    })
+  }
 
-    login = () => {
-        let user = {
-            user: this.state.user,
-            senha: this.state.senha 
-        }
-        let requisicao = Axios.post(this.url + "login", user)
-        requisicao.then((resposta) => {
-            if(resposta.status === 200){
-                alert("enviar para outra tela")
-            }
-            
-        })
-    }
+  const handleUser = event => {
+    setUser(event.target.value)
+  }
 
-    render(){
-        return (
-            <main className="Main">
-                <h1>Login</h1>
-                <form>
-                    <input placeholder="Usuário" type="text" id="user" onChange={this.handleInput} value={this.state.user}></input>
-                    <input placeholder="Senha" type="password" id="senha" onChange={this.handleInput} value={this.state.senha}></input>
-                    <button type="button" onClick={this.login} >Login</button>
-                </form>            
-            </main>
-        )
-    }
+  const handlePassword = event => {
+    setSenha(event.target.value)
+  }
 
+  return (
+    <div>
+      <h1>LOGIN</h1>
+      <form onSubmit={validarUser}>
+        <input type='text' id="user" onChange={handleUser} value={user} /><br/>
+        <input type='password' id="senha" onChange={handlePassword} value={senha} /><br/>
+        <input type="submit" value="Entrar" />
+      </form>
+    </div>
+  );
 }
 
-export default Login
+export default Login;

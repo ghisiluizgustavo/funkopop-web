@@ -1,24 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import Axios from 'axios'
+import {Link} from 'react-router-dom'
+import './Funko.css'
 
-class Funko extends React.Component {
+function Funko() {
 
-    constructor(){
-        super()
-        this.url = "http://localhost:4000/api/user/"
-    }
+    const url = "http://localhost:4000/api/funko/"
+    let [ funkos, setFunkos ] = useState([{}]) 
 
-    handleInput = (event) => {
-        this.setState({
-            [event.target.id]: event.target.value
+    useEffect(() => {
+        findAllFunkos()
+    })
+
+    function findAllFunkos(){
+        let requisicao = Axios.get(url);
+        requisicao.then((resposta) => {
+            setFunkos(resposta.data)
+            console.log(funkos)
         })
     }
 
-    render(){
-        return (
-            <h1>FUNKOOOO</h1>
-        )
-    }
-
+    return (
+        <div>
+            <h3>RESULTADOS</h3>
+            <Link to="/">Login</Link>
+            <div className='container'>
+                {funkos.map(funko => (
+                    <div className='funko'>
+                        <img src={funko.url}></img>
+                        <p><b>{funko.descricao}</b></p>
+                        <p><small>R${funko.valor}</small></p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    )
 }
 
 export default Funko
